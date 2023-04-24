@@ -1,0 +1,36 @@
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-side-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    font-size: 1.5em;
+    background-color: black;
+    color: white;
+}
+.inputs {
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}   
+
+.inputs input{
+    font-size: 1.5em;
+    width: 20em;
+}   
+
+.start {
+    margin-bottom: 10%;
+}
