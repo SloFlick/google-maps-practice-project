@@ -17,7 +17,7 @@ const MapInit = () => {
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
 
-
+    console.log(map)
     const originRef = useRef()
     const destinationRef = useRef()
 
