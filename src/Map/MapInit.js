@@ -11,7 +11,6 @@ const MapInit = () => {
         googleMapsApiKey: API_KEY_HERE, 
         libraries: ['places'],
     })
-console.log(process.env.REACT_APP_API_KEY)
     const [map, setMap] = useState(/** @type google.maps.Map */ (null));
     const [direction, setDirection] = useState(null)
     const [travelMode, setTravelMode] = useState('DRIVING')
