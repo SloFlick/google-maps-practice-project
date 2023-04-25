@@ -21,7 +21,7 @@
     color: white;
 }
 .inputs {
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
 }   
@@ -32,5 +32,103 @@
 }   
 
 .start {
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+}
+
+.calculate-btn  {
+    margin-top: 1em;
+    border-radius: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+.calculate-btn:hover {
+    cursor: pointer;
+    background-color: gainsboro;
+    color: black;
+}
+
+.travel-mode ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: -36px;
+}
+
+li {
+    list-style: none;
+}
+
+.travel-mode button {
+    font-size: 2em;
+    color: black;
+    border: none;
+    background: none;
+}
+
+.travel-mode button:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+.clear-btn {
+    margin-top: 1em;
+}
+
+.route-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clear-btn {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+}
+
+.clear-btn:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.map {
+    width: 70vw;
+    height: 100vh;
+  }
+
+/*Media queries*/
+
+@media screen and (max-width: 1300px) {
+    .map {
+        width: 60vw;
+    }
+    .left-side-container {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .map {
+        width: 50vw;
+    }
+    .left-side-container {
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .map {
+        top: 100%;
+        height: 50vh;
+        width: 100vw;
+    }
+    .left-side-container {
+        width: 100%;
+        position: absolute;
+        font-size: 0.5em;
+    }
 }
