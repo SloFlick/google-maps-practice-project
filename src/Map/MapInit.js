@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import './MapInit.css'
-import {useJsApiLoader, GoogleMap, DirectionsRenderer, Autocomplete, Marker, StreetViewService} from '@react-google-maps/api'
+import {useJsApiLoader, GoogleMap, DirectionsRenderer, Autocomplete, Marker} from '@react-google-maps/api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBusSimple, faCar, faPersonBiking, faPersonWalking, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
@@ -8,7 +8,7 @@ const center = { lat: 46.14, lng: 14.59 }
 
 const MapInit = () => {
     const {isLoaded} = useJsApiLoader({
-        googleMapsApiKey: API_KEY_HERE, 
+        googleMapsApiKey: process.env.REACT_APP_API_KEY, 
         libraries: ['places'],
     })
     const [map, setMap] = useState(/** @type google.maps.Map */ (null));
@@ -48,6 +48,7 @@ const MapInit = () => {
 
     const clearRoute = () => {
         setDirection(null)
+        setMap(null)
         originRef.current.value =''
         destinationRef.current.value =''
         setDuration('')
@@ -114,7 +115,7 @@ const MapInit = () => {
                 onLoad={map => setMap(map)} options={{streetViewControl: false,}}>
                 <Marker position={center} />
                 {direction && (
-                    <DirectionsRenderer directions={direction} />
+                    <DirectionsRenderer  directions={direction} />
                 )}
                 </GoogleMap>
             </div>
