@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import './MapInit.css'
-import {useJsApiLoader, GoogleMap, DirectionsRenderer, Autocomplete, Marker} from '@react-google-maps/api'
+import {useJsApiLoader, GoogleMap, DirectionsRenderer, Autocomplete, Marker, StreetViewService} from '@react-google-maps/api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBusSimple, faCar, faPersonBiking, faPersonWalking, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
@@ -8,10 +8,10 @@ const center = { lat: 46.14, lng: 14.59 }
 
 const MapInit = () => {
     const {isLoaded} = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_API_KEY, 
+        googleMapsApiKey: API_KEY_HERE, 
         libraries: ['places'],
     })
-
+console.log(process.env.REACT_APP_API_KEY)
     const [map, setMap] = useState(/** @type google.maps.Map */ (null));
     const [direction, setDirection] = useState(null)
     const [travelMode, setTravelMode] = useState('DRIVING')
@@ -111,8 +111,8 @@ const MapInit = () => {
                 </div>
             </div>
             <div position='absoulute' left={0} top={0} h='100%' w='100%'>
-                <GoogleMap mapContainerClassName="map" center={center} zoom={15}
-                onLoad={map => setMap(map)}>
+                <GoogleMap key={1} mapContainerClassName="map" center={center} zoom={15}
+                onLoad={map => setMap(map)} options={{streetViewControl: false,}}>
                 <Marker position={center} />
                 {direction && (
                     <DirectionsRenderer directions={direction} />
