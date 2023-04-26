@@ -3,6 +3,7 @@ import './MapInit.css'
 import {useJsApiLoader, GoogleMap, DirectionsRenderer, Autocomplete, Marker} from '@react-google-maps/api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBusSimple, faCar, faPersonBiking, faPersonWalking, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import TransitInfoCard from "../TransitInfoCard/TransitInfoCard";
 
 const center = { lat: 46.14, lng: 14.59 }
 
@@ -16,6 +17,7 @@ const MapInit = () => {
     const [travelMode, setTravelMode] = useState('DRIVING')
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+    const [transitInformation, setTransitInformation] = useState([])
 
     console.log(map)
     const originRef = useRef()
@@ -33,9 +35,15 @@ const MapInit = () => {
             travelMode: travelMode,
         // eslint-disable-next-line no-undef
         })
+        console.log(transitInformation)
         setDirection(outputs)
         setDistance(outputs.routes[0].legs[0].distance.text)
         setDuration(outputs.routes[0].legs[0].duration.text)
+        if (travelMode === 'TRANSIT') {
+        setTransitInformation(outputs.routes[0].legs[0].steps)
+        } else {
+            setTransitInformation('')
+        }
         }
         catch(error) {
             alert('There was an error loading your route')
@@ -53,6 +61,7 @@ const MapInit = () => {
         destinationRef.current.value =''
         setDuration('')
         setDistance('')
+        setTransitInformation('')
     }
 
     return(
@@ -107,6 +116,7 @@ const MapInit = () => {
                     <div className="route-info">
                         <h1>Travel time: {duration}</h1>
                         <h1>Travel distance: {distance}</h1>
+                        {transitInformation.length > 0 && <TransitInfoCard props={transitInformation} />}
                     </div>
                 </div>
             </div>
